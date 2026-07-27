@@ -1,13 +1,11 @@
 on:
   push:
-    branches:
-    - '*'
     branches-ignore:
-    - main
+      - main
 
   pull_request:
     branches:
-    - main
+      - main
 
 jobs:
   my_job:
