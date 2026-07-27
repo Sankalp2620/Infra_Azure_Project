@@ -1,1 +1,32 @@
+name: Terrafrom pipeline
+on:
+  push:
+    branches:
+      - main
+      - '*'
+  pull_request:
+    branches:
+      - main
 
+jobs:
+  my_first_job:
+      runs-on: ubuntu-latest
+      steps:
+        # This step checks out a copy of your repository.
+        - name: My first step - check out repository
+          uses: actions/checkout@v6
+
+        - name: Set up Terraform
+          uses: hashicorp/setup-terraform@v2
+          with:
+            terraform_version: 1.7.6
+
+        - name: Terraform Init
+          run: |
+            terraform init
+            echo "Terraform initialized successfully."
+
+        - name: Terraform Plan
+          run: |
+            terraform plan
+            echo "Terraform plan completed successfully."
